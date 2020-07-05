@@ -1,0 +1,15 @@
+{
+  "name": "miojo",
+  "version": "1.0.0",
+  "description": "Algoritmo para solucionar o problema do miojo",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raphael Amaral",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^5.1.0",
+    "inquirer": "^7.3.0"
+  }
+}

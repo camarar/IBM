@@ -1,0 +1,11 @@
+{
+  "name": "assassino",
+  "version": "1.0.0",
+  "description": "Algoritmo para descrobir o assassino.",
+  "main": "bin/Assassino.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raphael Amaral",
+  "license": "ISC" 
+}
