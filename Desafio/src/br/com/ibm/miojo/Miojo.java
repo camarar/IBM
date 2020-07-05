@@ -46,7 +46,7 @@ public class Miojo {
 		} while (true);
     	
     	
-    	if ( (a * contA == LIMITE_TEMPO) || (b * contB == LIMITE_TEMPO)) {
+    	if ( (a * contA >= LIMITE_TEMPO) || (b * contB >= LIMITE_TEMPO)) {
     		
 
     		tempoTotal = 0;			
@@ -58,36 +58,48 @@ public class Miojo {
     }
 
 	public static void main(String[] args) {
+		
 		int tempoTotal;
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.print("Informe o tempo de preparo do Miojo: ");
-		int tempoMiojo = scanner.nextInt();
-		
-		System.out.print("Informe o tempo da primeira ampulheta: ");
-		int ampulheta1 = scanner.nextInt();
-		
-		System.out.print("Informe o tempo da segunda ampulheta: ");
-		int ampulheta2 = scanner.nextInt();
-		
-		if (tempoMiojo == ampulheta1 || tempoMiojo == ampulheta2) {
+		try {
+			System.out.print("Informe o tempo de preparo do Miojo: ");
+			int tempoMiojo = scanner.nextInt();
 			
-			System.out.println("O tempo total para o preparo é : " + tempoMiojo + " minutos");
-		}else if (ampulheta1 == ampulheta2) {
-			System.out.println("O tempo total para o preparo do Miojo não será possível calcular pois as ampulhetas são do mesmo tempo!");
-		}else {
+			System.out.print("Informe o tempo da primeira ampulheta: ");
+			int ampulheta1 = scanner.nextInt();
 			
-			tempoTotal = tempoPreparo(tempoMiojo, ampulheta1, ampulheta2);
+			System.out.print("Informe o tempo da segunda ampulheta: ");
+			int ampulheta2 = scanner.nextInt();
 			
-			if (tempoTotal == 0) {
-				System.out.println("O tempo total para o preparo do Miojo não será possível calcular o tempo exato com as ampulhetas disponíveis!");
+			if (tempoMiojo == ampulheta1 || tempoMiojo == ampulheta2) {
+				
+				System.out.println("O tempo total para o preparo é : " + tempoMiojo + " minutos");
+			}else if (ampulheta1 == ampulheta2) {
+				System.out.println("O tempo total para o preparo do Miojo não será possível calcular pois as ampulhetas são do mesmo tempo!");
 			}else {
-    			System.out.println("O tempo total para o preparo é : " + tempoTotal + " minutos");
-			}
+				
+				tempoTotal = tempoPreparo(tempoMiojo, ampulheta1, ampulheta2);
+				
+				if (tempoTotal == 0) {
+					System.out.println("O tempo total para o preparo do Miojo não será possível calcular o tempo exato com as ampulhetas disponíveis!");
+				}else {
+	    			System.out.println("O tempo total para o preparo é : " + tempoTotal + " minutos");
+				}
 
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Infelizmente alguns erros foram encontrados. " + e.toString());
+		}finally {
+			scanner.close();
 		}
 		
-		scanner.close();
+		
+		
+		
+		
+		
 
 	}
 
