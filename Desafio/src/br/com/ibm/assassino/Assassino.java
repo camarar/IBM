@@ -130,29 +130,32 @@ public class Assassino {
 		int retorno;
 		int contTeoria = 0;
 		
-		String[] crime = cenaCrime();
-		System.out.println("Crime: " + crime[0] + " - " + crime[1] + " - " + crime[2]);
-		System.out.println("-----------------------------------------------------");
-		String[] teoria = criarTeoria();
-		System.out.println("Teoria 1: " + teoria[0] + " - " + teoria[1] + " - " + teoria[2]);
+		try {
+			String[] crime = cenaCrime();
+			System.out.println("Crime: " + crime[0] + " - " + crime[1] + " - " + crime[2]);
+			System.out.println("-----------------------------------------------------");
+			String[] teoria = criarTeoria();
+			System.out.println("Teoria "+ (contTeoria + 1) +": " + teoria[0] + " - " + teoria[1] + " - " + teoria[2]);
+			
+			boolean solucionado = false;
+			
+			do {
+				contTeoria ++;
+				retorno = averiguarTestemunha(teoria, crime);
 		
-		boolean solucionado = false;
-		
-		do {
-			contTeoria ++;
-			retorno = averiguarTestemunha(teoria, crime);
-	
-			if (retorno == 0) {
-				solucionado = true;
-			}else {
-				teoria = criarTeoria(teoria, retorno);
-				System.out.println("Teoria "+ contTeoria +": " + teoria[0] + " - " + teoria[1] + " - " + teoria[2]);
-			}
-		} while (solucionado == false);
-		
-		System.out.println("-----------------------------------------------------");
-		System.out.println("O caso foi solucionado em " + contTeoria + " teorias.");
-
+				if (retorno == 0) {
+					solucionado = true;
+				}else {
+					teoria = criarTeoria(teoria, retorno);
+					System.out.println("Teoria "+ (contTeoria + 1) +": " + teoria[0] + " - " + teoria[1] + " - " + teoria[2]);
+				}
+			} while (solucionado == false);
+			
+			System.out.println("-----------------------------------------------------");
+			System.out.println("O caso foi solucionado em " + contTeoria + " teorias.");
+			
+		} catch (Exception e) {
+			System.out.println("Infelizmente alguns erros foram encontrados. " + e.toString());
+		}
 	}
-
 }
